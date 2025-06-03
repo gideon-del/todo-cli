@@ -44,7 +44,7 @@ func GetTodos() []Todo {
 		fmt.Println(err)
 		return []Todo{}
 	}
-	fmt.Println(todos)
+
 	return todos
 }
 func SaveTodos(todo []Todo) error {
@@ -53,4 +53,32 @@ func SaveTodos(todo []Todo) error {
 		return err
 	}
 	return os.WriteFile(todoFile, jsonText, 0644)
+}
+
+func GetTodo(id int) (Todo, error) {
+	todos := GetTodos()
+	for i := range len(todos) {
+		todo := todos[i]
+		if todo.Id == id {
+			return todo, nil
+		}
+	}
+
+	return Todo{}, fmt.Errorf("Todo with id %v not found", id)
+}
+
+func UpdateTodos(updatedTodo Todo) error {
+	var updatedTodos []Todo = []Todo{}
+	todos := GetTodos()
+	for i := range len(todos) {
+		todo := todos[i]
+
+		if todo.Id == updatedTodo.Id {
+			updatedTodos = append(updatedTodos, updatedTodo)
+		} else {
+			updatedTodos = append(updatedTodos, todo)
+		}
+	}
+
+	return SaveTodos(updatedTodos)
 }
