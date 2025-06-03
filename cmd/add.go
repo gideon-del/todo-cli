@@ -16,7 +16,7 @@ var addCmd = &cobra.Command{
 		todoTitle := args[0]
 		todos := todo.GetTodos()
 
-		newTodo := todo.New(todoTitle, len(todos)+1, "in-progress")
+		newTodo := todo.New(todoTitle, todos[len(todos)-1].Id+1, "todo")
 		updatedTodos := append(todos, newTodo)
 		err := todo.SaveTodos(updatedTodos)
 

@@ -82,3 +82,40 @@ func UpdateTodos(updatedTodo Todo) error {
 
 	return SaveTodos(updatedTodos)
 }
+
+func DeleteTodo(todoId int) error {
+	todos := GetTodos()
+	selectedTodo, err := GetTodo(todoId)
+	updatedTodos := []Todo{}
+	if err != nil {
+		return err
+	}
+	for i := range len(todos) {
+		todo := todos[i]
+
+		if todo.Id != selectedTodo.Id {
+			updatedTodos = append(updatedTodos, Todo{
+				Title:     todo.Title,
+				Id:        i + 1,
+				Status:    todo.Status,
+				CreatedAt: todo.CreatedAt,
+				UpdatedAt: todo.UpdatedAt,
+			})
+		}
+	}
+
+	return SaveTodos(updatedTodos)
+
+}
+
+func ChangeTodoStatus(status string, todoId int) error {
+	selectedTodo, err := GetTodo(todoId)
+
+	if err != nil {
+		return err
+	}
+
+	selectedTodo.Status = status
+
+	return UpdateTodos(selectedTodo)
+}
