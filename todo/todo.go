@@ -119,3 +119,19 @@ func ChangeTodoStatus(status string, todoId int) error {
 
 	return UpdateTodos(selectedTodo)
 }
+
+func FilterTodoByStatus(status string) []Todo {
+	todos := GetTodos()
+
+	filteredTodos := []Todo{}
+
+	for i := range len(todos) {
+		todo := todos[i]
+
+		if todo.Status == status {
+			filteredTodos = append(filteredTodos, todo)
+		}
+	}
+
+	return filteredTodos
+}

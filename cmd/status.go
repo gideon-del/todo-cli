@@ -20,7 +20,7 @@ var inProgressCmd = &cobra.Command{
 			return errors.New("invalid id format. must be a number")
 		}
 
-		return todo.ChangeTodoStatus("in progress", int(todoId))
+		return todo.ChangeTodoStatus("in-progress", int(todoId))
 	},
 }
 var doneCmd = &cobra.Command{
