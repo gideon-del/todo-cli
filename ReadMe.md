@@ -34,36 +34,36 @@ cd ./todo-cli
 1.  Add todo
 
 ```bash
-  todo add "your todo name"
+todo add "your todo name"
 ```
 
 2. Update todo by id
 
 ```bash
-     todo update 1 "your todo title"
+todo update 1 "your todo title"
 ```
 
 3. Change todo status
 
 ```bash
-     todo mark-in-progress 1
-     todo mark-done 1
+todo mark-in-progress 1
+todo mark-done 1
 ```
 
 4. Delete todo
 
 ```bash
-     todo delete 1
+todo delete 1
 ```
 
 5. List todo
 
 ```bash
-     todo list
+todo list
 ```
 
 6. Filter todo by status (done,in-progress,todo)
 
 ```bash
-     todo list done
+todo list done
 ```
