@@ -1,6 +1,6 @@
 # Todo Cli Application
 
-This is a cli application written in go for managing todo's
+This is a cli application written in go for managing todo's. [Project](https://roadmap.sh/projects/task-tracker)
 
 ## Tech Stack
 
